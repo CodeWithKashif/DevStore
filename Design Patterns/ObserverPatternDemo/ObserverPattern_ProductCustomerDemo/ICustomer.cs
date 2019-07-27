@@ -7,6 +7,8 @@ namespace ObserverPattern_ProductCustomerDemo
     /// </summary>
     interface ICustomer
     {
-        void Notify(Product product);
+        void PriceDropAlert(Product product);
+        
+        void StockAlert(Product product);
     }
 }

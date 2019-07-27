@@ -9,31 +9,50 @@ namespace ObserverPattern_ProductCustomerDemo.Products
     abstract class Product
     {
         private int _price;
-        private readonly List<ICustomer> _customers = new List<ICustomer>();
+        private readonly List<ICustomer> _priceDropCusomers = new List<ICustomer>();
+        private readonly List<ICustomer> _stockAlerCustomers = new List<ICustomer>();
 
         protected Product(int price)
         {
             _price = price;
         }
 
-        public void Subscribe(ICustomer customer)
+        public void SubscribePriceAlert(ICustomer customer)
         {
-            _customers.Add(customer);
+            _priceDropCusomers.Add(customer);
         }
 
-        public void UnSubscribe(ICustomer customer)
+        public void UnSubscribePriceAlert(ICustomer customer)
         {
-            _customers.Remove(customer);
+            _priceDropCusomers.Remove(customer);
         }
 
-        public void NotifyCustomer()
+        public void SubscribeStockAlert(ICustomer customer)
         {
-            foreach (ICustomer customer in _customers)
+            _stockAlerCustomers.Add(customer);
+        }
+
+        public void UnSubscribeStockAlert(ICustomer customer)
+        {
+            _stockAlerCustomers.Remove(customer);
+        }
+
+        
+
+        public void PriceDropAlert()
+        {
+            foreach (ICustomer customer in _priceDropCusomers)
             {
-                customer.Notify(this);
+                customer.PriceDropAlert(this);
             }
+        }
 
-            //Console.WriteLine("");
+        public void BackInStockAlert()
+        {
+            foreach (ICustomer customer in _stockAlerCustomers)
+            {
+                customer.StockAlert(this);
+            }
         }
 
         public int Priced
@@ -44,31 +63,30 @@ namespace ObserverPattern_ProductCustomerDemo.Products
                 if (_price != value)
                 {
                     _price = value;
-                    NotifyCustomer(); //Automatically notify our observers of price changes
+                    PriceDropAlert(); //Automatically notify our observers of price changes
                 }
             }
         }
 
-        private bool _isAvailable;
+        private bool _isInStock;
 
-        public bool IsAvailable
+        public bool IsInStock
         {
             get
             {
-                return _isAvailable; 
+                return _isInStock; 
             }
             set
             {
-                _isAvailable = value;
+                _isInStock = value;
 
                 if (value)
                 {
-                    NotifyCustomer();
+                    //_customers.ForEach(x=>x.InSctockNotify(this));
+                    BackInStockAlert(); //Automatically notify our observers of price changes
                 }
             }
         }
-
-
 
     }
 }

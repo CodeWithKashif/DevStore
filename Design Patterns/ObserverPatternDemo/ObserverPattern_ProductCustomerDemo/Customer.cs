@@ -10,6 +10,7 @@ namespace ObserverPattern_ProductCustomerDemo
     {
         private readonly string _email;
         private readonly double _purchaseThreshold;
+        private readonly bool _stockAlert;
 
         public Customer(string email, double purchaseThreshold)
         {
@@ -17,13 +18,27 @@ namespace ObserverPattern_ProductCustomerDemo
             _purchaseThreshold = purchaseThreshold;
         }
 
-        public void Notify(Product product)
+        public Customer(string email, bool stockAlert)
         {
-            //Console.WriteLine("Notified {0} of {1}'s " + " price change to {2:C} .", _email, product.GetType().Name, product.Priced);
+            _email = email;
+            _stockAlert = stockAlert;
+        }
+
+        public void PriceDropAlert(Product product)
+        {
             if (product.Priced < _purchaseThreshold)
             {
-                Console.WriteLine(_email + " wants to buy and " + product.GetType().Name + "!");
+                Console.WriteLine($"Hey {_email} price is dropped for {product.GetType().Name} and it is in your budget now..!");
             }
         }
+
+        public void StockAlert(Product product)
+        {
+            if (_stockAlert)
+            {
+                Console.WriteLine($"Hey {_email}, {product.GetType().Name} is back in Stock now!");
+            }
+        }
+
     }
 }
