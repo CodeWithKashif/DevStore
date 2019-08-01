@@ -6,7 +6,6 @@ using Dapper;
 
 namespace WebConfigEncryptionDemo.Repository
 {
-
     public class ProductRepository
     {
         private readonly string _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;

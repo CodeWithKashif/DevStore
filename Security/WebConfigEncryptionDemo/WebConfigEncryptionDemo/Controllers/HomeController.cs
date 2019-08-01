@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebConfigEncryptionDemo.Models;
 using WebConfigEncryptionDemo.Repository;
 
 namespace WebConfigEncryptionDemo.Controllers
@@ -11,7 +14,13 @@ namespace WebConfigEncryptionDemo.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Product = new ProductRepository().GetProduct();
+            NameValueCollection section = (NameValueCollection)ConfigurationManager.GetSection("secureAppSettings");
+            ViewBag.securedUserName = section["userName"];
+            ViewBag.securedPassword = section["userPassword"];
+
+            Product product = new ProductRepository().GetProduct();
+            ViewBag.Product = product;
+
             return View();
         }
 
