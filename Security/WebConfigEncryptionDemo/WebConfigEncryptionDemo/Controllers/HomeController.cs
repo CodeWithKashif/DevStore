@@ -18,8 +18,13 @@ namespace WebConfigEncryptionDemo.Controllers
             ViewBag.securedUserName = section["userName"];
             ViewBag.securedPassword = section["userPassword"];
 
-            Product product = new ProductRepository().GetProduct();
-            ViewBag.Product = product;
+            try
+            {
+                Product product = new ProductRepository().GetProduct();
+                ViewBag.ProductId = product.Id;
+                ViewBag.ProductName = product.Name;
+            }
+            catch (Exception){}
 
             return View();
         }

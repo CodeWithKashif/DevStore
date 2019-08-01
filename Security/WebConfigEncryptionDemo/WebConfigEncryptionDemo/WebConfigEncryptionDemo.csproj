@@ -172,6 +172,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="BatFiles\Encrypt_Config_Section.bat" />
+    <Content Include="BatFiles\Decrypt_Config_Section.bat" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -199,6 +201,15 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Web.Backup.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Backup.Debug.config">
+      <DependentUpon>Web.Backup.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Backup.Release.config">
+      <DependentUpon>Web.Backup.config</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
