@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrategyPatternDemo", "Stra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrategyPattern_SalaryCalculateDemo", "StrategyPattern_SalaryCalculateDemo\StrategyPattern_SalaryCalculateDemo.csproj", "{129841D6-554E-4EFD-8238-DD619BA08FC8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrategyPattern_EncodingStrategyDemo", "StrategyPattern_EncodingStrategyDemo\StrategyPattern_EncodingStrategyDemo.csproj", "{15242AA2-FEC6-469A-8DF7-E516B893698C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{129841D6-554E-4EFD-8238-DD619BA08FC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{129841D6-554E-4EFD-8238-DD619BA08FC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{129841D6-554E-4EFD-8238-DD619BA08FC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15242AA2-FEC6-469A-8DF7-E516B893698C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15242AA2-FEC6-469A-8DF7-E516B893698C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15242AA2-FEC6-469A-8DF7-E516B893698C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15242AA2-FEC6-469A-8DF7-E516B893698C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
