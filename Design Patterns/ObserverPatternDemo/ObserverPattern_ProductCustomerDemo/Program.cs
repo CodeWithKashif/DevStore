@@ -24,7 +24,18 @@ namespace ObserverPattern_ProductCustomerDemo
             ipad.SubscribeStockAlert(new Customer("user5@gmail.com", true));
 
 
-            //-----Actions by admin in admin section ---------
+            //-----Actions being performed by admin in admin section ---------
+            AdministratorAcitivity(iphone, ipad);
+
+
+            Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Actions being performed by admin in admin section 
+        /// </summary>
+        private static void AdministratorAcitivity(Iphone iphone, Ipad ipad)
+        {
             //// Fluctuating prices will notify subscribing customer for Iphone
             iphone.Priced = 44000;
 
@@ -33,9 +44,6 @@ namespace ObserverPattern_ProductCustomerDemo
 
             //ipad is back in stock now so it will notify its subscriber
             ipad.IsInStock = true;
-
-
-            Console.ReadKey();
         }
     }
 }

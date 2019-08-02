@@ -8,9 +8,10 @@ namespace ObserverPattern_ProductCustomerDemo.Products
     /// </summary>
     abstract class Product
     {
+        private readonly List<ICustomer> _priceDropAlertCusomers = new List<ICustomer>();
+        private readonly List<ICustomer> _stockAlertCustomers = new List<ICustomer>();
+
         private int _price;
-        private readonly List<ICustomer> _priceDropCusomers = new List<ICustomer>();
-        private readonly List<ICustomer> _stockAlerCustomers = new List<ICustomer>();
 
         protected Product(int price)
         {
@@ -19,40 +20,43 @@ namespace ObserverPattern_ProductCustomerDemo.Products
 
         public void SubscribePriceAlert(ICustomer customer)
         {
-            _priceDropCusomers.Add(customer);
+            _priceDropAlertCusomers.Add(customer);
         }
 
         public void UnSubscribePriceAlert(ICustomer customer)
         {
-            _priceDropCusomers.Remove(customer);
+            _priceDropAlertCusomers.Remove(customer);
         }
 
         public void SubscribeStockAlert(ICustomer customer)
         {
-            _stockAlerCustomers.Add(customer);
+            _stockAlertCustomers.Add(customer);
         }
 
         public void UnSubscribeStockAlert(ICustomer customer)
         {
-            _stockAlerCustomers.Remove(customer);
+            _stockAlertCustomers.Remove(customer);
         }
 
         
 
         public void PriceDropAlert()
         {
-            foreach (ICustomer customer in _priceDropCusomers)
+            foreach (ICustomer customer in _priceDropAlertCusomers)
             {
                 customer.PriceDropAlert(this);
             }
+
+            Console.WriteLine("");
         }
 
         public void BackInStockAlert()
         {
-            foreach (ICustomer customer in _stockAlerCustomers)
+            foreach (ICustomer customer in _stockAlertCustomers)
             {
                 customer.StockAlert(this);
             }
+            Console.WriteLine("");
         }
 
         public int Priced
